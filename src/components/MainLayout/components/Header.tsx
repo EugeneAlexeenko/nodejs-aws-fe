@@ -46,7 +46,7 @@ export default function Header() {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
-          <Link className={classes.homeLink} to="/">RC Hobby Store (task-3 edition)</Link>
+          <Link className={classes.homeLink} to="/">RC Hobby Store (task-5 edition)</Link>
         </Typography>
 
         {auth && (
