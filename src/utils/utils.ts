@@ -4,3 +4,6 @@ const priceFormatter = new Intl.NumberFormat('en-US', {
 });
 
 export const formatAsPrice = (price: number) => priceFormatter.format(price);
+
+export const getAuthorizationToken = () => `Basic ${window.localStorage.getItem('authorization_token')}`;
+
