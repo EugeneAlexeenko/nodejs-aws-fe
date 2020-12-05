@@ -6,16 +6,24 @@ import {store} from 'store/store';
 import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import CssBaseline from "@material-ui/core/CssBaseline";
-import axios from 'axios';
+import axios, {AxiosError} from 'axios';
 
 axios.interceptors.response.use(
   response => {
     return response;
   },
-  function(error) {
-    if (error.response.status === 400) {
-      alert(error.response.data?.data);
-    }
+  function(error: AxiosError) {
+      const status = error.response?.status;
+
+      console.error(error);
+
+      switch (status) {
+          case 400: alert(error.response?.data?.data); break;
+          case 401: alert('Unauthorized'); break;
+          case 403: alert('Forbidden'); break;
+          default: alert('Unexpected error');
+      }
+
     return Promise.reject(error.response);
   }
 );
